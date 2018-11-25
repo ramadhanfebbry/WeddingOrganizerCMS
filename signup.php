@@ -1,34 +1,3 @@
-<?php
-
-if(isset($_POST['submit'])){
- $user = $_POST['username'];
- $pass = $_POST['password'];
-
- $conn = mysqli_connect('localhost', 'root', '','weding');
-  if(mysqli_connect_errno()){
-   echo "Koneksi Ke Server Gagal";
-   exit();
-  }
-
- $sql="SELECT * FROM admin WHERE username='".$user."'AND password='".$pass."'";
-    $result=mysqli_query($conn, $sql);
-    $num_rows=mysqli_num_rows($result);
-    $row=mysqli_fetch_row($result);
-    if($num_rows>0){
-        session_start();
-        $_SESSION["username"]=$row['username'];
-        $_SESSION["password"]=$row['password'];
-        #echo "<script>alert('succes !!!');</script>";
-        echo "<script>location='index.php';</script>";
-
-    } else {
-      echo "('Username atau Password Admin tidak benar !!!')";
-        // echo "<script>alert('Username atau Password Admin tidak benar !!!');</script>";
-        echo "<script>location='login.php?error=true';</script>";
-    }
-}
-?>
-
 
 
 
@@ -37,10 +6,6 @@ if(isset($_POST['submit'])){
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
         <link rel="icon" href="img/favicon.png" type="image/png">
         <title>Real State Multi</title>
         <!-- Bootstrap CSS -->
@@ -107,55 +72,37 @@ if(isset($_POST['submit'])){
            
             <div class="container">
         <div class="advanced_search" style="max-width: 100%;margin-top: 10px">
-          <h3>LOGIN</h3>
+          <h3>SIGN UP</h3>
           <div class="search_select">
-            <div class="container">
-              
-               <?php 
-                if (isset($_GET["error"])){
-                  echo " <p > cek kembali email & password yang di masukan salah </p>";
-                }
-                ?>
-                
-              
-            </div>
+            
+           <form action="aksi_signup.php" method="POST" enctype="multipar/ form-data">
+                                    <div class="mt-10">
+                                        <input name="username" placeholder="username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'username'" required="" class="single-input" type="text">
+                                    </div>
+                                   
+                                    <div class="mt-10">
+                                        <input name="password" placeholder="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required="" class="single-input" type="password">
+                                    </div>
 
-           <form action="login.php" method="post">
-                  <div class="mt-10">
-                    <input name="username" placeholder="user name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'user name'" required="" class="single-input" type="text">
-                  </div>
-                  <div class="mt-10">
-                    <input name="password" placeholder="PASSWORD" onfocus="this.placeholder = ''" onblur="this.placeholder = 'PASSWORD'" required="" class="single-input" type="PASSWORD">
-                  </div>
-                  <div class="mt-10">
-                    <div class="button-group-area mt-40">
-            <button class="genric-btn success circle" value="login" name="submit" type="submit"> login </button>
-            
-            <a href="signup.php" class="genric-btn success circle">SIGN UP</a>
-            
-           
-          </div> </div>
-                 
-                </form>
+                                    <div class="mt-10">
+                                        <input name="email" placeholder="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'email'" required="" class="single-input" type="email">
+                                    </div>
+                                    
+                                    <div class="mt-10">
+                                        <input name="no_hp" placeholder="no_hp" onfocus="this.placeholder = ''" onblur="this.placeholder = 'no_hpp'" required="" class="single-input" type="text" pattern="[0-9]*">
+                                    </div>
+                                    
+                                    
+                                    <div class="mt-10">
+                                        <textarea name="alamat"  class="single-textarea" placeholder="alamat" onfocus="this.placeholder = 'alamat'" onblur="this.placeholder = 'alamat'" required=""></textarea>
+                                    </div>
+                                   
+            <a href="LOGIN.php" class="genric-btn success circle">LOGIN</a>
+            <button class="genric-btn success circle" value="SIGN UP" name="submit" type="submit"> SIGN UP </button>
+                                </form>
             </div>
         </section>
         <!--================End Home Banner Area =================-->
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -247,5 +194,9 @@ Copyright ©<script>document.write(new Date().getFullYear());</script>2018 All r
         <script src="js/mail-script.js"></script>
         <script src="js/theme.js"></script>
  
+
+
+
+
     
 </body></html>
