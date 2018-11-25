@@ -1,3 +1,4 @@
+<?php require '../../config.php'; ?>
 
 <!doctype html>
 <html lang="en">
@@ -113,31 +114,45 @@
                   <label for="selectAll"></label>
                 </span>
               </th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Phone</th>
+              <th>No</th>
+              <th>Nama Barang</th>
+              <th>Harga</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <span class="custom-checkbox">
-                  <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                  <label for="checkbox1"></label>
-                </span>
-              </td>
-              <td>Thomas Hardy</td>
-              <td>thomashardy@mail.com</td>
-              <td>89 Chiaroscuro Rd, Portland, USA</td>
-              <td>(171) 555-2222</td>
-              <td>
-                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit"></i></a>
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-              </td>
-            </tr>
+            <?php
 
+              $sql = "SELECT * FROM barang_sewa ";
+              $result = $db->query($sql);
+              $no = 0;
+                      // output data of each row
+              while($row = $result->fetch_assoc()) {
+                $no+=1;
+                ?>
+                <tr>
+                  <td>
+                    <span class="custom-checkbox">
+                      <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                      <label for="checkbox1"></label>
+                    </span>
+                  </td>
+                  <td><?php echo $no; ?></td>
+                  <td class="nama_barang"><?php echo $row['nama_barang']; ?></td>
+                  <td class="harga_barang"><?php echo $row['harga_barang']; ?></td>
+                  <td class="status"><?php echo $row['status']; ?></td>
+                  <td>
+                    <a href="#editEmployeeModal" onclick="setFormEdit(this)" class="edit" data-toggle="modal" data-id="<?php echo $row['id']; ?>"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit"></i></a>
+                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                  </td>
+                </tr>
+
+                
+                <?php
+              }
+            ?>
+            
           </tbody>
         </table>
         <div class="clearfix">
@@ -158,28 +173,29 @@
     <div id="addEmployeeModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form>
+          <form action="create" method="POST">
             <div class="modal-header">            
-              <h4 class="modal-title">Add Employee</h4>
+              <h4 class="modal-title">Add Barang</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
               <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" required name="nama">
               </div>
               <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" required>
+                <label>Harga</label>
+                <input type="number" class="form-control" required name="harga">
               </div>
               <div class="form-group">
-                <label>Address</label>
-                <textarea class="form-control" required></textarea>
-              </div>
-              <div class="form-group">
-                <label>Phone</label>
-                <input type="text" class="form-control" required>
-              </div>          
+                <label>Status</label>
+                <div class="clearfix"></div>
+                <select name="status" >
+                  <option value="Tersedia">Tersedia</option>
+                  <option value="Tidak Tersedia">Tidak Tersedia</option>
+                </select>
+                <div class="clearfix"></div>
+              </div>              
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -193,28 +209,29 @@
     <div id="editEmployeeModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form>
+          <form action="" method="POST" class="form-edit">
             <div class="modal-header">            
-              <h4 class="modal-title">Edit Employee</h4>
+              <h4 class="modal-title">Edit Barang</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
               <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" required name="nama">
               </div>
               <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" required>
+                <label>Harga</label>
+                <input type="number" class="form-control" required name="harga">
               </div>
               <div class="form-group">
-                <label>Address</label>
-                <textarea class="form-control" required></textarea>
-              </div>
-              <div class="form-group">
-                <label>Phone</label>
-                <input type="text" class="form-control" required>
-              </div>          
+                <label>Status</label>
+                <div class="clearfix"></div>
+                <select name="status" >
+                  <option value="Tersedia">Tersedia</option>
+                  <option value="Tidak Tersedia">Tidak Tersedia</option>
+                </select>
+                <div class="clearfix"></div>
+              </div>              
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -332,29 +349,42 @@
     <script src="../../js/theme.js"></script>
 
     <script type="text/javascript">
+     function setFormEdit(dom){
+        console.log(dom)
+        var id = $(dom).attr("data-id");
+        var nama_barang = $(dom).parent().parent().children("td.nama_barang").html();
+        var harga_barang = $(dom).parent().parent().children("td.harga_barang").html();
+        var status_barang = $(dom).parent().parent().children("td.status").html();
+
+        $(".form-edit").attr("action", "update.php?id="+ id);
+        $(".form-edit input[name='nama']").val(nama_barang);
+        $(".form-edit input[name='harga']").val(harga_barang);
+        $(".form-edit select[name='status']").val(status_barang);
+     }
+
       $(document).ready(function(){
-  // Activate tooltip
-  $('[data-toggle="tooltip"]').tooltip();
-  
-  // Select/Deselect checkboxes
-  var checkbox = $('table tbody input[type="checkbox"]');
-  $("#selectAll").click(function(){
-    if(this.checked){
-      checkbox.each(function(){
-        this.checked = true;                        
+        // Activate tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+        
+        // Select/Deselect checkboxes
+        var checkbox = $('table tbody input[type="checkbox"]');
+        $("#selectAll").click(function(){
+          if(this.checked){
+            checkbox.each(function(){
+              this.checked = true;                        
+            });
+          } else{
+            checkbox.each(function(){
+              this.checked = false;                        
+            });
+          } 
+        });
+        checkbox.click(function(){
+          if(!this.checked){
+            $("#selectAll").prop("checked", false);
+          }
+        });
       });
-    } else{
-      checkbox.each(function(){
-        this.checked = false;                        
-      });
-    } 
-  });
-  checkbox.click(function(){
-    if(!this.checked){
-      $("#selectAll").prop("checked", false);
-    }
-  });
-});
-</script> 
+  </script> 
 </body>
 </html>
