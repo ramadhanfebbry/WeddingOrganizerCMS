@@ -123,9 +123,23 @@
           </thead>
           <tbody>
             <?php
+              if(isset($_GET['limit'])){
+                $limit = $_GET['limit'];
+              }else{
+                $limit = 5;
+              }
 
-              $sql = "SELECT * FROM barang_sewa ";
+              if(isset($_GET['page'])){
+                $page = $_GET['page'];
+              }else{
+                $page = 0;
+              }
+
+              $sql = "SELECT * FROM barang_sewa LIMIT ". $limit. " OFFSET ". $page ."";
+              // echo $sql;
               $result = $db->query($sql);
+              $count = count($result);
+              $count2 = ($db->query("SELECT count(*) as count FROM barang_sewa ")->fetch_assoc()['count']);
               $no = 0;
                       // output data of each row
               while($row = $result->fetch_assoc()) {
@@ -144,7 +158,7 @@
                   <td class="status"><?php echo $row['status']; ?></td>
                   <td>
                     <a href="#editEmployeeModal" onclick="setFormEdit(this)" class="edit" data-toggle="modal" data-id="<?php echo $row['id']; ?>"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit"></i></a>
-                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                    <a href="#deleteEmployeeModal" onclick="setSingleDelete(this)" class="delete" data-toggle="modal" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
                   </td>
                 </tr>
 
@@ -156,15 +170,15 @@
           </tbody>
         </table>
         <div class="clearfix">
-          <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+          <div class="hint-text">Showing <b><?php echo $count; ?></b> out of <b><?php echo $count2; ?></b> entries</div>
           <ul class="pagination">
-            <li class="page-item disabled"><a href="#">Previous</a></li>
+            <!-- <li class="page-item disabled"><a href="#">Previous</a></li>
             <li class="page-item"><a href="#" class="page-link">1</a></li>
             <li class="page-item"><a href="#" class="page-link">2</a></li>
             <li class="page-item active"><a href="#" class="page-link">3</a></li>
             <li class="page-item"><a href="#" class="page-link">4</a></li>
             <li class="page-item"><a href="#" class="page-link">5</a></li>
-            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li> -->
           </ul>
         </div>
       </div>
@@ -245,7 +259,7 @@
     <div id="deleteEmployeeModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form>
+          <!-- <form> -->
             <div class="modal-header">            
               <h4 class="modal-title">Delete Employee</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -256,9 +270,9 @@
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-              <input type="submit" class="btn btn-danger" value="Delete">
+              <a href="javascript:void(0)" class="btn btn-danger delete-button" value="Delete" onclick="performDelete(this)">Delete</a>
             </div>
-          </form>
+          <!-- </form> -->
         </div>
       </div>
     </div>
@@ -347,6 +361,7 @@
     <script src="../../js/jquery.ajaxchimp.min.js"></script>
     <script src="../../js/mail-script.js"></script>
     <script src="../../js/theme.js"></script>
+    <script src="../../js/pagination.js"></script>
 
     <script type="text/javascript">
      function setFormEdit(dom){
@@ -362,7 +377,31 @@
         $(".form-edit select[name='status']").val(status_barang);
      }
 
+     function setSingleDelete(dom){
+        $(".delete-button").attr('data-id', $(dom).attr('data-id'));    
+        $(".delete-button").attr('delete-type', 'single');        
+     }
+
+     function performDelete(dom){
+      console.log(dom)
+        if($(dom).attr('delete-type') == 'single'){
+          document.location = 'delete.php?id='+$(dom).attr('data-id');
+        }else{
+            
+        }
+     }
+
+$('.pagination').twbsPagination({
+          totalPages: <?php echo (round($count2 / $limit) == 0 ? 1 : round($count2 / $limit)); ?>,
+          // page: "1",
+          // visiblePages: <?php echo $count2 / $limit ?>,
+          onPageClick: function (event, page) {
+            // document.location = 'index.php?page='+ page;            
+            $("table tbody").load("index_ajax.php?page="+page)
+          }
+        });
       $(document).ready(function(){
+        
         // Activate tooltip
         $('[data-toggle="tooltip"]').tooltip();
         
