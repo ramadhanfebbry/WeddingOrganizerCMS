@@ -6,60 +6,27 @@
                
         <!--================Properties Area =================-->
         <section class="properties_area">
-          <div class="container">
+          <div class="container" style="padding-top: 20px">
             <div class="main_title">
-              <h2>Our Top Rated Properties</h2>
+              <h2>Hot Packages</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
             </div>
             <div class="row properties_inner">
-              <div class="col-lg-4">
+              <?php
+              require 'config.php';
+
+              $sql = "SELECT * FROM barang_sewa LIMIT 3";
+              // echo $sql;
+              $result = $db->query($sql);
+              
+                                    // output data of each row
+              while($row = $result->fetch_assoc()) {
+                $no+=1;
+                ?>
+               <div class="col-lg-4">
                 <div class="properties_item">
                   <div class="pp_img">
-                    <img class="img-fluid" src="../img/properties/pp-1.jpg" alt="">
-                  </div>
-                  <div class="pp_content">
-                    <a href="#"><h4>PAKET A</h4></a>
-                    <div class="tags">
-                      <a href="#">GEDUNG</a>
-                      <a href="#">BAJU PENGANTIN</a>
-                      <a href="#">RIAS </a>
-                      <a href="#"><i class="fa fa-check" aria-hidden="true"></i>Pool</a>
-                      <a href="#"><i class="fa fa-times" aria-hidden="true"></i>Bar</a>
-                      <a href="#"><i class="fa fa-times" aria-hidden="true"></i>Pool</a>
-                    </div>
-                    <div class="pp_footer">
-                      <h5>Total: 80 JT</h5>
-                      <a class="main_btn" href="#">For Sale</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="properties_item">
-                  <div class="pp_img">
-                    <img class="img-fluid" src="../img/properties/pp-2.jpg" alt="">
-                  </div>
-                  <div class="pp_content">
-                    <a href="#"><h4>PAKET B</h4></a>
-                    <div class="tags">
-                      <a href="#">GEDUNG</a>
-                      <a href="#">BAJU PENGANTIN</a>
-                      <a href="#">RIAS </a>
-                      <a href="#"><i class="fa fa-check" aria-hidden="true"></i>Pool</a>
-                      <a href="#"><i class="fa fa-times" aria-hidden="true"></i>Bar</a>
-                      <a href="#"><i class="fa fa-times" aria-hidden="true"></i>Pool</a>
-                    </div>
-                    <div class="pp_footer">
-                      <h5>Total: 50 JT</h5>
-                      <a class="main_btn" href="#">For Sale</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="properties_item">
-                  <div class="pp_img">
-                    <img class="img-fluid" src="../img/properties/pp-3.jpg" alt="">
+                    <img class="img-fluid" src="img/properties/pp-3.jpg" alt="">
                   </div>
                   <div class="pp_content">
                     <a href="#"><h4>PAET C</h4></a>
@@ -79,6 +46,11 @@
                   </div>
                 </div>
               </div>
+                
+                <?php
+              }
+            ?>
+              
             </div>
           </div>
         </section>
@@ -123,33 +95,6 @@
         <!--================End Feature Area =================-->
         
         
-        <!--================Clients Logo Area =================-->
-        <section class="clients_logo_area p_120">
-          <div class="container">
-            <div class="main_title">
-              <h2>Reliable Customers</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            </div>
-            <div class="clients_slider owl-carousel">
-              <div class="item">
-                <img src="../img/clients-logo/c-logo-1.png" alt="">
-              </div>
-              <div class="item">
-                <img src="../img/clients-logo/c-logo-2.png" alt="">
-              </div>
-              <div class="item">
-                <img src="../img/clients-logo/c-logo-3.png" alt="">
-              </div>
-              <div class="item">
-                <img src="../img/clients-logo/c-logo-4.png" alt="">
-              </div>
-              <div class="item">
-                <img src="../img/clients-logo/c-logo-5.png" alt="">
-              </div>
-            </div>
-          </div>
-        </section>
-        <!--================End Clients Logo Area =================-->
         
         
         <!--================ start footer Area  =================-->  
