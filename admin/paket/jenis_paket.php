@@ -5,20 +5,20 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="../img/favicon.png" type="image/png">
+        <link rel="icon" href="../../img/favicon.png" type="image/png">
         <title>Real State Multi</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../vendors/linericon/style.css">
-        <link rel="stylesheet" href="../css/font-awesome.min.css">
-        <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="../vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="../vendors/nice-select/css/nice-select.css">
-        <link rel="stylesheet" href="../vendors/animate-css/animate.css">
-        <link rel="stylesheet" href="../vendors/jquery-ui/jquery-ui.css">
+        <link rel="stylesheet" href="../../css/bootstrap.css">
+        <link rel="stylesheet" href="../../vendors/linericon/style.css">
+        <link rel="stylesheet" href="../../css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="../../vendors/lightbox/simpleLightbox.css">
+        <link rel="stylesheet" href="../../vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="../../vendors/animate-css/animate.css">
+        <link rel="stylesheet" href="../../vendors/jquery-ui/jquery-ui.css">
         <!-- main css -->
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/responsive.css">
+        <link rel="stylesheet" href="../../css/style.css">
+        <link rel="stylesheet" href="../../css/responsive.css">
     </head>
     <body>
         
@@ -37,11 +37,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
               <ul class="nav navbar-nav menu_nav ml-auto">
-                <li class="nav-item active"><a class="nav-link" href="login.php">Home</a></li> 
-                <li class="nav-item"><a class="nav-link" href="login.php">PAKET</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.php">SEWA BARANG</a></li>
+                <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+                <li class="nav-item"><a class="nav-link" href="jenis_paket.php">PAKET</a></li>
+                <li class="nav-item"><a class="nav-link" href="../barang_sewa/index.php">SEWA BARANG</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../jasa/jasa.php">Jasa jahit</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.php">CONTACT</a></li>
-                 <li class="nav-item"><a class="nav-link" href="login.php">LOGIN</a></li>
+                 <li class="nav-item"><a class="nav-link" href="">LOGOUT</a></li>
                </ul>
                 
                 
@@ -154,12 +155,10 @@
                   <div class="pp_content">
                     <a href="#"><h4>PAKET B</h4></a>
                     <div class="tags">
-                      <a href="#">GEDUNG</a>
-                      <a href="#">BAJU PENGANTIN</a>
-                      <a href="#">RIAS </a>
-                      <a href="#"><i class="fa fa-check" aria-hidden="true"></i>Pool</a>
-                      <a href="#"><i class="fa fa-times" aria-hidden="true"></i>Bar</a>
-                      <a href="#"><i class="fa fa-times" aria-hidden="true"></i>Pool</a>
+                      <textarea id="some-textarea" placeholder="Enter text ..." style="styles to copy to the iframe"></textarea>
+<script type="text/javascript">
+  $('#some-textarea').wysihtml5();
+</script>
                     </div>
                     <div class="pp_footer">
                       <h5>Total: 50 JT</h5>

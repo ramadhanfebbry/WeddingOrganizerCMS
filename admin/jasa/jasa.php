@@ -42,8 +42,8 @@
             <ul class="nav navbar-nav menu_nav ml-auto">
              <li class="nav-item active"><a class="nav-link" href="../index.php">Home</a></li> 
               <li class="nav-item"><a class="nav-link" href="../paket/jenis_paket.php">Paket</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Sewa Barang</a></li>
-              <li class="nav-item"><a class="nav-link" href="../jasa/jasa.php">Jasa jahit</a></li>
+              <li class="nav-item"><a class="nav-link" href="../barang_sewa/index.php">Sewa Barang</a></li>
+              <li class="nav-item"><a class="nav-link" href="">Jasa jahit</a></li>
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                <li class="nav-item "><a class="nav-link" href="">Logout</a></li>
                

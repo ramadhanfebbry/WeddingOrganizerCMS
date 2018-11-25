@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
    exit();
   }
 
- $sql="SELECT * FROM admin WHERE username='".$user."'AND password='".$pass."'";
+ $sql="SELECT * FROM user WHERE username='".$user."'AND password='".$pass."'";
     $result=mysqli_query($conn, $sql);
     $num_rows=mysqli_num_rows($result);
     $row=mysqli_fetch_row($result);

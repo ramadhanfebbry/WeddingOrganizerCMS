@@ -11,7 +11,7 @@
 
   if (mysqli_query($db, $sql)) {
     echo "<SCRIPT type='text/javascript'> 
-              alert('Barang Sewa berhasil diperbaharui.  ');
+              alert('Barang Sewa berhasil diperbaharui.');
               window.location.replace(\"index.php\");
           </SCRIPT>";
   } else {
