@@ -21,7 +21,6 @@
               
                                     // output data of each row
               while($row = $result->fetch_assoc()) {
-                $no+=1;
                 ?>
                <div class="col-lg-4">
                 <div class="properties_item">
