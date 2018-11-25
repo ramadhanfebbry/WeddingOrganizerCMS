@@ -1,61 +1,4 @@
-<?php require '../../config.php'; ?>
-
-<!doctype html>
-<html lang="en">
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="../../img/favicon.png" type="image/png">
-  <title>Real State Multi</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../../css/bootstrap.css">
-  <link rel="stylesheet" href="../../vendors/linericon/style.css">
-  <link rel="stylesheet" href="../../css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../vendors/owl-carousel/owl.carousel.min.css">
-  <link rel="stylesheet" href="../../vendors/lightbox/simpleLightbox.css">
-  <link rel="stylesheet" href="../../vendors/nice-select/css/nice-select.css">
-  <link rel="stylesheet" href="../../vendors/animate-css/animate.css">
-  <link rel="stylesheet" href="../../vendors/jquery-ui/jquery-ui.css">
-  <!-- main css -->
-  <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../../css/responsive.css">
-  <link rel="stylesheet" href="../../css/custom.css">
-
-</head>
-<body>
-
-  <!--================Header Menu Area =================-->
-  <header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container box_1620">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="index.html"><img src="../../img/logo.png" alt=""></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto">
-             <li class="nav-item active"><a class="nav-link" href="../index.php">Home</a></li> 
-              <li class="nav-item"><a class="nav-link" href="../paket/jenis_paket.php">Paket</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Sewa Barang</a></li>
-              <li class="nav-item"><a class="nav-link" href="../jasa/jasa.php">Jasa jahit</a></li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-               <li class="nav-item "><a class="nav-link" href="">Logout</a></li>
-               
-             </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="nav-item"><a href="#" class="search"><i class="lnr lnr-magnifier"></i></a></li>
-            </ul>
-          </div> 
-        </div>
-      </nav>
-    </div>
-  </header>
+<?php require '../header.php'; ?>
   <!--================Header Menu Area =================-->
 
   <!--================Home Banner Area =================-->
@@ -124,11 +67,11 @@
                 $page = 0;
               }
 
-              $sql = "SELECT * FROM barang_sewa LIMIT ". $limit. " OFFSET ". $page ."";
+              $sql = "SELECT * FROM paket LIMIT ". $limit. " OFFSET ". $page ."";
               // echo $sql;
               $result = $db->query($sql);
               $count = count($result);
-              $count2 = ($db->query("SELECT count(*) as count FROM barang_sewa ")->fetch_assoc()['count']);
+              $count2 = ($db->query("SELECT count(*) as count FROM paket ")->fetch_assoc()['count']);
               $no = 0;
                       // output data of each row
               while($row = $result->fetch_assoc()) {
@@ -142,8 +85,8 @@
                     </span>
                   </td>
                   <td><?php echo $no; ?></td>
-                  <td class="nama_barang"><?php echo $row['nama_barang']; ?></td>
-                  <td class="harga_barang"><?php echo $row['harga_barang']; ?></td>
+                  <td class="nama"><?php echo $row['nama']; ?></td>
+                  <td class="harga"><?php echo $row['harga']; ?></td>
                   <td class="status"><?php echo $row['status']; ?></td>
                   <td>
                     <a href="#editEmployeeModal" onclick="setFormEdit(this)" class="edit" data-toggle="modal" data-id="<?php echo $row['id']; ?>"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit"></i></a>
@@ -178,7 +121,7 @@
         <div class="modal-content">
           <form action="create.php" method="POST">
             <div class="modal-header">            
-              <h4 class="modal-title">Add Barang</h4>
+              <h4 class="modal-title">Add Paket</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -214,7 +157,7 @@
         <div class="modal-content">
           <form action="" method="POST" class="form-edit">
             <div class="modal-header">            
-              <h4 class="modal-title">Edit Barang</h4>
+              <h4 class="modal-title">Edit Paket</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">          
@@ -277,21 +220,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../js/popper.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/stellar.js"></script>
-    <script src="../../vendors/lightbox/simpleLightbox.min.js"></script>
-    <script src="../../vendors/nice-select/js/jquery.nice-select.min.js"></script>
-    <script src="../../vendors/isotope/imagesloaded.pkgd.min.js"></script>
-    <script src="../../vendors/isotope/isotope-min.js"></script>
-    <script src="../../vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="../../vendors/jquery-ui/jquery-ui.js"></script>
-    <script src="../../js/jquery.ajaxchimp.min.js"></script>
-    <script src="../../js/mail-script.js"></script>
-    <script src="../../js/theme.js"></script>
-    <script src="../../js/pagination.js"></script>
-
+ 
     <script type="text/javascript">
      function setFormEdit(dom){
         console.log(dom)

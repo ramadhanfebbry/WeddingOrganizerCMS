@@ -38,9 +38,9 @@
             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
               <ul class="nav navbar-nav menu_nav ml-auto">
                 <li class="nav-item active"><a class="nav-link" href="login.php">Home</a></li> 
-                <li class="nav-item"><a class="nav-link" href="login.php">PAKET</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.php">SEWA BARANG</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.php">CONTACT</a></li>
+                <li class="nav-item"><a class="nav-link" href="paket/">PAKET</a></li>
+                <li class="nav-item"><a class="nav-link" href="barang_sewa/">SEWA BARANG</a></li>
+                <li class="nav-item"><a class="nav-link" href="pemesanan/">Pemesanan</a></li>
                  <li class="nav-item"><a class="nav-link" href="login.php">LOGIN</a></li>
                </ul>
                 
