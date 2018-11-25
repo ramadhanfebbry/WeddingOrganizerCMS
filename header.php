@@ -51,15 +51,16 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
         <ul class="nav navbar-nav menu_nav ml-auto">
-          <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li> 
-          <li class="nav-item"><a class="nav-link" href="paket.php">Paket</a></li>
-          <li class="nav-item"><a class="nav-link" href="barang_sewa.php">Barang</a></li>
-          <li class="nav-item"><a class="nav-link" href="jasa.php">Jasa</a></li>
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php' ?  'active' : '');  ?>"><a class="nav-link" href="index.php">Home</a></li> 
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'paket.php' ?  'active' : ''); ?>"><a class="nav-link" href="paket.php">Paket</a></li>
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'barang_sewa.php' ?  'active' : '');  ?>"><a class="nav-link" href="barang_sewa.php">Barang</a></li>
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'jasa.php' ?  'active' : '');  ?>"><a class="nav-link" href="jasa.php">Jasa</a></li>
           <?php 
             if(isset($_SESSION['username'])){
               echo "<li class='nav-item'><a class=\"nav-link\" href=\"logout.php\">Log Out</a></li>";
             }else{
-              echo "<li class='nav-item'><a class=\"nav-link\" href=\"login.php\">Log In</a></li>";
+              $is_active = ((basename($_SERVER['PHP_SELF']) == 'login.php' || basename($_SERVER['PHP_SELF']) == 'signup.php') ?  'active' : '');
+              echo "<li class='nav-item $is_active '><a class=\"nav-link\" href=\"login.php\">Log In</a></li>";
             }
           ?>
           
