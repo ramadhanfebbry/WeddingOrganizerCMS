@@ -2,58 +2,7 @@
         <!--================Header Menu Area =================-->
         
     
-            
-               
-        <!--================Properties Area =================-->
-        <section class="properties_area">
-          <div class="container" style="padding-top: 20px">
-            <div class="main_title">
-              <h2>Hot Packages</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-            </div>
-            <div class="row properties_inner">
-              <?php
-              require 'config.php';
-
-              $sql = "SELECT * FROM barang_sewa order by id desc LIMIT 3";
-              // echo $sql;
-              $result = $db->query($sql);
-              
-                                    // output data of each row
-              while($row = $result->fetch_assoc()) {
-                $no+=1;
-                ?>
-               <div class="col-lg-4">
-                <div class="properties_item">
-                  <div class="pp_img">
-                    <img class="img-fluid" src="img/properties/pp-3.jpg" alt="">
-                  </div>
-                  <div class="pp_content">
-                    <a href="#"><h4>PAET C</h4></a>
-                    <div class="tags">
-                      <tr>
-                        <td>
-                          gedung
-                        </td>
-
-                      </tr>
-
-                    </div>
-                    <div class="pp_footer">
-                      <h5>Total: 30 JT</h5>
-                      <a class="main_btn" href="#">For Sale</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-                
-                <?php
-              }
-            ?>
-              
-            </div>
-          </div>
-        </section>
+      
         <!--================End Properties Area =================-->
         
         

@@ -8,14 +8,14 @@
         <section class="properties_area">
           <div class="container" style="padding-top: 20px">
             <div class="main_title">
-              <h2>Hot Packages</h2>
+              <h2>List Paket</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
             </div>
             <div class="row properties_inner">
               <?php
               require 'config.php';
 
-              $sql = "SELECT * FROM barang_sewa order by id desc LIMIT 3";
+              $sql = "SELECT * FROM barang_sewa order by id desc";
               // echo $sql;
               $result = $db->query($sql);
               
@@ -57,42 +57,7 @@
         <!--================End Properties Area =================-->
         
         
-        <!--================Feature Area =================-->
-        <section class="feature_area p_120">
-          <div class="container">
-            <div class="main_title">
-              <h2>Demandable Cities</h2>
-              <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to day,</p>
-            </div>
-            <div class="row cities_inner">
-              <div class="col-lg-3 col-md-6">
-                <div class="cities_item">
-                  <img class="img-fluid" src="img/cities/cities-1.jpg" alt="">
-                  <a class="main_btn2" href="#">Book Now</a>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="cities_item">
-                  <img class="img-fluid" src="img/cities/cities-2.jpg" alt="">
-                  <a class="main_btn2" href="#">Book Now</a>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="cities_item">
-                  <img class="img-fluid" src="img/cities/cities-3.jpg" alt="">
-                  <a class="main_btn2" href="#">Book Now</a>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="cities_item">
-                  <img class="img-fluid" src="img/cities/cities-4.jpg" alt="">
-                  <a class="main_btn2" href="#">Book Now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!--================End Feature Area =================-->
+        
         
         
         
